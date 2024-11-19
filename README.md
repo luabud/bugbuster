@@ -35,10 +35,10 @@ Make sure you have [Python](https://www.python.org/downloads/) installed.
 
 Bug Buster is a single-player puzzle video game. The objective of the game is to explore the area around your landed space rocket, without coming too close to the deadly Bug aliens. Your trusty tricounter will tell you the number of B'ugs in the vicinity.
 
-![Moonsweeper](screenshot-minesweeper1.jpg)
+![Game start](screenshot1.jpg)
 
 
-![Moonsweeper](screenshot-minesweeper2.jpg)
+![Game over](screenshot2.jpg)
 
 > If you want to learn more about build GUI applications with Python,
 take a look at my [PyQt5 tutorials](https://www.pythonguis.com)
