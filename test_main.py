@@ -83,9 +83,23 @@ class TestMainWindow(unittest.TestCase):
                     w.click()
         self.assertEqual(self.window.status, Status.SUCCESS)
         self.assertEqual(self.window.button.icon().name(), QIcon(STATUS_ICONS[Status.SUCCESS]).name())
+        
+    def test_button_pressed_reset(self):
+        self.window.update_status(Status.READY)
+        self.window.button_pressed()
+        self.assertEqual(self.window.status, Status.READY)
+        mine_count = sum(1 for x in range(self.window.b_size) for y in range(self.window.b_size) if self.window.grid.itemAtPosition(y, x).widget().is_mine)
+        self.assertEqual(mine_count, self.window.n_mines)
 
- # test if the game ever succeeds
-    
+    def test_button_pressed_failed(self):
+        self.window.update_status(Status.FAILED)
+        self.window.button_pressed()
+        self.assertEqual(self.window.status, Status.FAILED)
+        for x in range(self.window.b_size):
+            for y in range(self.window.b_size):
+                w = self.window.grid.itemAtPosition(y, x).widget()
+                self.assertTrue(w.is_revealed)
+
 
 if __name__ == "__main__":
     unittest.main()
