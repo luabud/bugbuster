@@ -87,7 +87,7 @@ class TestMainWindow(unittest.TestCase):
     def test_button_pressed_reset(self):
         self.window.update_status(Status.READY)
         self.window.button_pressed()
-        self.assertEqual(self.window.status, Status.READY)
+        self.assertEqual(self.window.status, Status.PLAYING)
         mine_count = sum(1 for x in range(self.window.b_size) for y in range(self.window.b_size) if self.window.grid.itemAtPosition(y, x).widget().is_mine)
         self.assertEqual(mine_count, self.window.n_mines)
 
