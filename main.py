@@ -108,6 +108,7 @@ class MainWindow(QMainWindow):
                 w.clicked.connect(self.trigger_start)
                 w.expandable.connect(self.expand_reveal)
                 w.ohno.connect(self.game_over)
+                w.revealed.connect(self.check_win_condition)
 
     def reset_map(self):
         # Clear all mine positions
@@ -209,6 +210,12 @@ class MainWindow(QMainWindow):
         self.reveal_map()
         self.update_status(Status.FAILED)
 
+    def check_win_condition(self):
+        for x in range(0, self.b_size):
+            for y in range(0, self.b_size):
+                w = self.grid.itemAtPosition(y, x).widget()
+                if not w.is_revealed and not w.is_mine:
+                    return
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)

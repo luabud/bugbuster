@@ -81,6 +81,7 @@ class TestMainWindow(unittest.TestCase):
                 w = self.window.grid.itemAtPosition(y, x).widget()
                 if not w.is_mine:
                     w.click()
+        self.window.check_win_condition()
         self.assertEqual(self.window.status, Status.SUCCESS)
         self.assertEqual(self.window.button.icon().name(), QIcon(STATUS_ICONS[Status.SUCCESS]).name())
         

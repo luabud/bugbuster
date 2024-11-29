@@ -19,6 +19,7 @@ class PositionSquare(QWidget):
     expandable = pyqtSignal(int, int)
     clicked = pyqtSignal()
     ohno = pyqtSignal()
+    revealed = pyqtSignal()
 
     def __init__(self, x, y):
         super().__init__()
@@ -87,6 +88,7 @@ class PositionSquare(QWidget):
     def reveal(self):
         self.is_revealed = True
         self.update()
+        self.revealed.emit()
 
     def click(self):
         if not self.is_revealed:
@@ -103,5 +105,6 @@ class PositionSquare(QWidget):
         elif e.button() == Qt.MouseButton.LeftButton:
             self.click()
 
+            
             if self.is_mine:
                 self.ohno.emit()
